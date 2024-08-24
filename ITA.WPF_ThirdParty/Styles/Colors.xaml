@@ -1,0 +1,41 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <SolidColorBrush x:Key="WhiteColorVeryBright">#FFF</SolidColorBrush>
+    <SolidColorBrush x:Key="WhiteColorBright">#DDD</SolidColorBrush>
+    <SolidColorBrush x:Key="WhiteColorNormal">#CCC</SolidColorBrush>
+    <SolidColorBrush x:Key="WhiteColorDark">#BBB</SolidColorBrush>
+    <SolidColorBrush x:Key="WhiteColorVeryDark">#AAA</SolidColorBrush>
+
+    <SolidColorBrush x:Key="GreyColorVeryBright">#999</SolidColorBrush>
+    <SolidColorBrush x:Key="GreyColorBright">#888</SolidColorBrush>
+    <SolidColorBrush x:Key="GreyColorNormal">#777</SolidColorBrush>
+    <SolidColorBrush x:Key="GreyColorDark">#666</SolidColorBrush>
+    <SolidColorBrush x:Key="GreyColorVeryDark">#555</SolidColorBrush>
+    
+    <SolidColorBrush x:Key="BlackColorVeryBright">#444</SolidColorBrush>
+    <SolidColorBrush x:Key="BlackColorBright">#333</SolidColorBrush>
+    <SolidColorBrush x:Key="BlackColorNormal">#222</SolidColorBrush>
+    <SolidColorBrush x:Key="BlackColorDark">#111</SolidColorBrush>
+    <SolidColorBrush x:Key="BlackColorVeryDark">#000</SolidColorBrush>
+
+    <SolidColorBrush x:Key="NavyBlueColorVeryBright">#2f3972</SolidColorBrush>
+    <SolidColorBrush x:Key="NavyBlueColorBright">#0b03c6</SolidColorBrush>
+    <SolidColorBrush x:Key="NavyBlueColorNormal">#0a0499</SolidColorBrush>
+    <SolidColorBrush x:Key="NavyBlueColorDark">#08046b</SolidColorBrush>
+    <SolidColorBrush x:Key="NavyBlueColorVeryDark">#06034c</SolidColorBrush>
+
+    <SolidColorBrush x:Key="BlueColorVeryBright">#80d2f7</SolidColorBrush>
+    <SolidColorBrush x:Key="BlueColorBright">#12a6e8</SolidColorBrush>
+    <SolidColorBrush x:Key="BlueColorNormal">#0693d1</SolidColorBrush>
+    <SolidColorBrush x:Key="BlueColorDark">#0677a8</SolidColorBrush>
+    <SolidColorBrush x:Key="BlueColorVeryDark">#056791</SolidColorBrush>
+
+    <SolidColorBrush x:Key="SkyBlueColorVeryBright">#d1efff</SolidColorBrush>
+    <SolidColorBrush x:Key="SkyBlueColorBright">#a9dffc</SolidColorBrush>
+    <SolidColorBrush x:Key="SkyBlueColorNormal">#84d4ff</SolidColorBrush>
+    <SolidColorBrush x:Key="SkyBlueColorDark">#70ceff</SolidColorBrush>
+    <SolidColorBrush x:Key="SkyBlueColorVeryDark">#51c3ff</SolidColorBrush>
+    
+</ResourceDictionary>

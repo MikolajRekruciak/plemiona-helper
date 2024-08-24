@@ -1,0 +1,20 @@
+﻿
+             xmlns:customControls="clr-namespace:WPF_ThirdParty.CustomControls;assembly=WPF_ThirdParty"
+
+
+    ~ BUTTON WITH ICON ~
+
+    <customControls:ButtonWithIcon 
+        Icon="FileDownload" 
+        Text="Save"
+        Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}, Path=DataContext.CreateJsonFile}"/>
+
+
+
+    ~ MENU BUTTON ~
+    
+    <customControls:MenuButton 
+        Icon="FileDownload" 
+        Text="Create backup"
+        Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}, Path=DataContext.CreateJsonFile}"/>
+                

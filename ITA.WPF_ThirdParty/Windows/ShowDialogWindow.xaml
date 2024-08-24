@@ -1,0 +1,26 @@
+﻿<local:BaseWindowWithChangableContent 
+    x:Class="WPF_ThirdParty.Windows.ShowDialogWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:WPF_ThirdParty.Windows"
+    SizeToContent="WidthAndHeight" 
+    WindowStartupLocation="CenterScreen"
+    WindowStyle="None" 
+    ResizeMode="NoResize"
+    AllowsTransparency="True" 
+    Background="Transparent">
+    <Border Margin="20" CornerRadius="8" BorderThickness="12" BorderBrush="{DynamicResource MaterialDesignPaper}">
+        <Border.Effect>
+            <DropShadowEffect 
+                Color="Black"
+                BlurRadius="20"
+                ShadowDepth="0" />
+        </Border.Effect>
+        <ContentControl 
+            Margin="-2"
+            Name="WindowContentControl"
+            Background="{DynamicResource MaterialDesignPaper}"/>
+    </Border>
+</local:BaseWindowWithChangableContent>

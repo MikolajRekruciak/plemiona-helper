@@ -1,0 +1,174 @@
+﻿<UserControl x:Class="ITA.WPF_ReuseableUserControls.FullKeyboard"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Background="{StaticResource MaterialDesignPaper}">
+
+    <UserControl.Resources>
+
+        <Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}" x:Key="BaseButtonStyle">
+            <Setter Property="FontSize" Value="26"/>
+            <Setter Property="VerticalAlignment" Value="Stretch"/>
+        </Style>
+        
+        <Style TargetType="Button" 
+               BasedOn="{StaticResource BaseButtonStyle}" 
+               x:Key="NumberButton">
+            <Setter Property="Background" Value="#888"/>
+            <Setter Property="BorderBrush" Value="#888"/>
+        </Style>
+
+        <Style TargetType="Button" 
+               BasedOn="{StaticResource BaseButtonStyle}" 
+               x:Key="FunctionalButton">
+        </Style>
+
+        <Style TargetType="Button" 
+               BasedOn="{StaticResource BaseButtonStyle}" 
+               x:Key="ActionButton">
+            <Setter Property="Background" Value="#AAA"/>
+            <Setter Property="BorderBrush" Value="#AAA"/>
+        </Style>
+
+    </UserControl.Resources>
+
+    <DockPanel>
+
+
+        <TextBox Name="ValueTextBox" DockPanel.Dock="Top" Margin="0,0,0,0" FontSize="26" VerticalContentAlignment="Center" PreviewKeyUp="ValueTextBox_PreviewKeyUp">
+        </TextBox>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Row="1" Name="HeightHelperGrid"></Grid>
+
+            <Button Name="Number1Button" Grid.Row="1" Height="{Binding ElementName=HeightHelperGrid, Path=ActualHeight}"  Grid.Column="1" Content="1"  Click="Number1Button_Click" Style="{StaticResource NumberButton}"/>
+            <Button Name="Number2Button" Grid.Row="1" Height="{Binding ElementName=HeightHelperGrid, Path=ActualHeight}" Grid.Column="3" Content="2"   Click="Number2Button_Click" Style="{StaticResource NumberButton}"/>
+            <Button Name="Number3Button" Grid.Row="1" Height="{Binding ElementName=HeightHelperGrid, Path=ActualHeight}" Grid.Column="5" Content="3"   Click="Number3Button_Click" Style="{StaticResource NumberButton}"/>
+            <Button Name="Number4Button" Grid.Row="1" Height="{Binding ElementName=HeightHelperGrid, Path=ActualHeight}" Grid.Column="7" Content="4"   Click="Number4Button_Click" Style="{StaticResource NumberButton}"/>
+            <Button Name="Number5Button" Grid.Row="1" Height="{Binding ElementName=HeightHelperGrid, Path=ActualHeight}" Grid.Column="9" Content="5"   Click="Number5Button_Click" Style="{StaticResource NumberButton}"/>
+            <Button Name="Number6Button" Grid.Row="1" Height="{Binding ElementName=HeightHelperGrid, Path=ActualHeight}" Grid.Column="11" Content="6"  Click="Number6Button_Click" Style="{StaticResource NumberButton}"/>
+            <Button Name="Number7Button" Grid.Row="1" Height="{Binding ElementName=HeightHelperGrid, Path=ActualHeight}" Grid.Column="13" Content="7"  Click="Number7Button_Click" Style="{StaticResource NumberButton}"/>
+            <Button Name="Number8Button" Grid.Row="1" Height="{Binding ElementName=HeightHelperGrid, Path=ActualHeight}" Grid.Column="15" Content="8"  Click="Number8Button_Click" Style="{StaticResource NumberButton}"/>
+            <Button Name="Number9Button" Grid.Row="1" Height="{Binding ElementName=HeightHelperGrid, Path=ActualHeight}" Grid.Column="17" Content="9"  Click="Number9Button_Click" Style="{StaticResource NumberButton}"/>
+            <Button Name="Number0Button" Grid.Row="1" Height="{Binding ElementName=HeightHelperGrid, Path=ActualHeight}" Grid.Column="19" Content="0"  Click="Number0Button_Click" Style="{StaticResource NumberButton}"/>
+
+            <Button Name="LetterQButton" Grid.Row="3"  Grid.Column="1" Content="Q" Height="{Binding ElementName=HeightHelperGrid, Path=ActualHeight}"  Click="LetterQButton_Click" Style="{StaticResource FunctionalButton}"/>
+            <Button Name="LetterWButton" Grid.Row="3" Grid.Column="3"  Content="W" Height="{Binding ElementName=HeightHelperGrid, Path=ActualHeight}"   Click="LetterWButton_Click" Style="{StaticResource FunctionalButton}"/>
+            <Button Name="LetterEButton" Grid.Row="3" Grid.Column="5"  Content="E" Height="{Binding ElementName=HeightHelperGrid, Path=ActualHeight}"   Click="LetterEButton_Click" Style="{StaticResource FunctionalButton}"/>
+            <Button Name="LetterRButton" Grid.Row="3" Grid.Column="7"  Content="R" Height="{Binding ElementName=HeightHelperGrid, Path=ActualHeight}"   Click="LetterRButton_Click" Style="{StaticResource FunctionalButton}"/>
+            <Button Name="LetterTButton" Grid.Row="3" Grid.Column="9"  Content="T" Height="{Binding ElementName=HeightHelperGrid, Path=ActualHeight}"   Click="LetterTButton_Click" Style="{StaticResource FunctionalButton}"/>
+            <Button Name="LetterYButton" Grid.Row="3" Grid.Column="11" Content="Y" Height="{Binding ElementName=HeightHelperGrid, Path=ActualHeight}"  Click="LetterYButton_Click" Style="{StaticResource FunctionalButton}"/>
+            <Button Name="LetterUButton" Grid.Row="3" Grid.Column="13" Content="U" Height="{Binding ElementName=HeightHelperGrid, Path=ActualHeight}"  Click="LetterUButton_Click" Style="{StaticResource FunctionalButton}"/>
+            <Button Name="LetterIButton" Grid.Row="3" Grid.Column="15" Content="I" Height="{Binding ElementName=HeightHelperGrid, Path=ActualHeight}"  Click="LetterIButton_Click" Style="{StaticResource FunctionalButton}"/>
+            <Button Name="LetterOButton" Grid.Row="3" Grid.Column="17" Content="O" Height="{Binding ElementName=HeightHelperGrid, Path=ActualHeight}"  Click="LetterOButton_Click" Style="{StaticResource FunctionalButton}"/>
+            <Button Name="LetterPButton" Grid.Row="3" Grid.Column="19" Content="P" Height="{Binding ElementName=HeightHelperGrid, Path=ActualHeight}"  Click="LetterPButton_Click" Style="{StaticResource FunctionalButton}"/>
+
+            <Button Name="LetterAButton"     Grid.Row="5"  Grid.Column="1" Content="A" Height="{Binding ElementName=HeightHelperGrid, Path=ActualHeight}"  Click="LetterAButton_Click" Style="{StaticResource FunctionalButton}"/>
+            <Button Name="LetterSButton"     Grid.Row="5" Grid.Column="3"  Content="S" Height="{Binding ElementName=HeightHelperGrid, Path=ActualHeight}"   Click="LetterSButton_Click" Style="{StaticResource FunctionalButton}"/>
+            <Button Name="LetterDButton"     Grid.Row="5" Grid.Column="5"  Content="D" Height="{Binding ElementName=HeightHelperGrid, Path=ActualHeight}"   Click="LetterDButton_Click" Style="{StaticResource FunctionalButton}"/>
+            <Button Name="LetterFButton"     Grid.Row="5" Grid.Column="7"  Content="F" Height="{Binding ElementName=HeightHelperGrid, Path=ActualHeight}"   Click="LetterFButton_Click" Style="{StaticResource FunctionalButton}"/>
+            <Button Name="LetterGButton"     Grid.Row="5" Grid.Column="9"  Content="G" Height="{Binding ElementName=HeightHelperGrid, Path=ActualHeight}"   Click="LetterGButton_Click" Style="{StaticResource FunctionalButton}"/>
+            <Button Name="LetterHButton"     Grid.Row="5" Grid.Column="11" Content="H" Height="{Binding ElementName=HeightHelperGrid, Path=ActualHeight}"  Click="LetterHButton_Click" Style="{StaticResource FunctionalButton}"/>
+            <Button Name="LetterJButton"     Grid.Row="5" Grid.Column="13" Content="J" Height="{Binding ElementName=HeightHelperGrid, Path=ActualHeight}"  Click="LetterJButton_Click" Style="{StaticResource FunctionalButton}"/>
+            <Button Name="LetterKButton"     Grid.Row="5" Grid.Column="15" Content="K" Height="{Binding ElementName=HeightHelperGrid, Path=ActualHeight}"  Click="LetterKButton_Click" Style="{StaticResource FunctionalButton}"/>
+            <Button Name="LetterLButton"     Grid.Row="5" Grid.Column="17" Content="L" Height="{Binding ElementName=HeightHelperGrid, Path=ActualHeight}"  Click="LetterLButton_Click" Style="{StaticResource FunctionalButton}"/>
+            <Button Name="LetterCommaButton" Grid.Row="5" Grid.Column="19" Content="," Height="{Binding ElementName=HeightHelperGrid, Path=ActualHeight}"  Click="LetterCommaButton_Click" Style="{StaticResource ActionButton}"/>
+
+
+            <Button Name="LetterDotButton"   Height="{Binding ElementName=HeightHelperGrid, Path=ActualHeight}"  Grid.Row="7" Grid.Column="1" Content="."  Click="LetterDotButton_Click" Style="{StaticResource ActionButton}"/>
+            <Button Name="LetterZButton"     Height="{Binding ElementName=HeightHelperGrid, Path=ActualHeight}"  Grid.Row="7"  Grid.Column="3" Content="Z"  Click="LetterZButton_Click" Style="{StaticResource FunctionalButton}"/>
+            <Button Name="LetterXButton"     Height="{Binding ElementName=HeightHelperGrid, Path=ActualHeight}"  Grid.Row="7" Grid.Column="5"  Content="X"   Click="LetterXButton_Click" Style="{StaticResource FunctionalButton}"/>
+            <Button Name="LetterCButton"     Height="{Binding ElementName=HeightHelperGrid, Path=ActualHeight}"  Grid.Row="7" Grid.Column="7"  Content="C"   Click="LetterCButton_Click" Style="{StaticResource FunctionalButton}"/>
+            <Button Name="LetterVButton"     Height="{Binding ElementName=HeightHelperGrid, Path=ActualHeight}"  Grid.Row="7" Grid.Column="9"  Content="V"   Click="LetterVButton_Click" Style="{StaticResource FunctionalButton}"/>
+            <Button Name="LetterBButton"     Height="{Binding ElementName=HeightHelperGrid, Path=ActualHeight}"  Grid.Row="7" Grid.Column="11"  Content="B"   Click="LetterBButton_Click" Style="{StaticResource FunctionalButton}"/>
+            <Button Name="LetterNButton"     Height="{Binding ElementName=HeightHelperGrid, Path=ActualHeight}"  Grid.Row="7" Grid.Column="13" Content="N"  Click="LetterNButton_Click" Style="{StaticResource FunctionalButton}"/>
+            <Button Name="LetterMButton"     Height="{Binding ElementName=HeightHelperGrid, Path=ActualHeight}"  Grid.Row="7"  Grid.Column="15" Content="M"  Click="LetterMButton_Click" Style="{StaticResource FunctionalButton}"/>
+            <Button Name="LetterMinusButton" Height="{Binding ElementName=HeightHelperGrid, Path=ActualHeight}"  Grid.Row="7"  Grid.Column="17" Content="-"  Click="LetterMinusButton_Click" Style="{StaticResource ActionButton}"/>
+            <Button Name="LetterSlashButton" Height="{Binding ElementName=HeightHelperGrid, Path=ActualHeight}"  Grid.Row="7"  Grid.Column="19" Content="/"  Click="LetterSlashButton_Click" Style="{StaticResource ActionButton}"/>
+
+            <Button Name="SpacebarButton"  Height="{Binding ElementName=HeightHelperGrid, Path=ActualHeight}"  Grid.Row="9"  Grid.Column="1" Grid.ColumnSpan="13" Click="SpacebarButton_Click" Style="{StaticResource ActionButton}"/>
+            <Button Name="BackspaceButton" Height="{Binding ElementName=HeightHelperGrid, Path=ActualHeight}"  Grid.Row="9" Grid.Column="15" Grid.ColumnSpan="3" Click="BackspaceButton_Click"
+                    BorderBrush="#B64"
+                    Background="#B64" >
+                    <Button.Content>
+                    <Grid VerticalAlignment="Center">
+                        <Polyline Points="10,5, 0,15, 10, 25, 30, 25, 30,5, 10,5, 0, 15" Stroke="White" StrokeThickness="3" >
+                                <!--<Polyline.Effect>
+                                    <DropShadowEffect ShadowDepth="3" Direction="70" Color="Black" Opacity="0.5" BlurRadius="3" />
+                                </Polyline.Effect>-->
+                            </Polyline>
+                            <Polyline Points="13,10, 22,19" Stroke="White" StrokeThickness="3" />
+                            <Polyline Points="22,10, 13,19" Stroke="White" StrokeThickness="3" />
+                        </Grid>
+                    </Button.Content>
+                </Button>
+            <Button Name="ClearButton" Height="{Binding ElementName=HeightHelperGrid, Path=ActualHeight}"  Grid.Row="9" Grid.Column="19"  Content="C"   Click="ClearButton_Click" 
+                    BorderBrush="#B64"
+                    Background="#B64"
+                    FontSize="26"/>
+            
+            
+            <Button FontSize="26" Grid.Row="11" Grid.Column="1" Name="AnulujButton"
+                    Grid.ColumnSpan="5"
+                    Height="{Binding ElementName=HeightHelperGrid, Path=ActualHeight}" 
+                BorderBrush="#D42"
+                Background="#D42"
+                Content="CANCEL" Click="AnulujButton_Click"/>
+
+
+            <Button FontSize="26" Grid.Row="11" Grid.Column="15"
+                    Grid.ColumnSpan="5"
+                    
+Height="{Binding ElementName=HeightHelperGrid, Path=ActualHeight}" 
+                    BorderBrush="#4B4"
+                    Background="#4B4"
+                    Name="PotwierdzButton" Content="OK" Click="PotwierdzButton_Click"/>
+            
+            
+        </Grid>
+        
+    </DockPanel>
+    
+
+</UserControl>

@@ -1,0 +1,42 @@
+﻿<Window x:Class="PlemionaHelper.ShowDialogs.GetWioskaIdShowDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PlemionaHelper.ShowDialogs"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        SizeToContent="WidthAndHeight"
+        WindowStyle="None"
+        Title="GetWioskaIdShowDialog">
+    <Grid Margin="8"
+          Width="400">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0"
+                   Text="Wprowadź ID wioski"/>
+
+        <TextBox Name="InputTextBox"
+                 Grid.Row="1"
+                 MinWidth="100"
+                 VerticalAlignment="Center"
+                 Margin="10"/>
+
+        <Button Grid.Row="2"
+                Width="60"
+                HorizontalAlignment="Right"
+                Content="OK"
+                Click="OkButton_Click"/>
+
+
+        <Button Grid.Row="2"
+                Width="60"
+                HorizontalAlignment="Left"
+                Content="Cancel"
+                Click="CancelButton_Click"/>
+    </Grid>
+</Window>

@@ -1,0 +1,26 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="./Colors.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <SolidColorBrush x:Key="MainColorVeryBright" Color="{Binding Source={StaticResource  BlackColorVeryBright}, Path=Color}"/>
+    <SolidColorBrush x:Key="MainColorBright" Color="{Binding Source={StaticResource  BlackColorBright}, Path=Color}"/>
+    <SolidColorBrush x:Key="MainColorNormal" Color="{Binding Source={StaticResource  BlackColorNormal}, Path=Color}"/>
+    <SolidColorBrush x:Key="MainColorDark" Color="{Binding Source={StaticResource  BlackColorDark}, Path=Color}"/>
+    <SolidColorBrush x:Key="MainColorVeryDark" Color="{Binding Source={StaticResource BlackColorVeryDark}, Path=Color}"/>
+
+    <SolidColorBrush x:Key="AddionalColorVeryBright" Color="{Binding Source={StaticResource  GreyColorVeryBright}, Path=Color}"/>
+    <SolidColorBrush x:Key="AddionalColorBright" Color="{Binding Source={StaticResource  GreyColorBright}, Path=Color}"/>
+    <SolidColorBrush x:Key="AddionalColorNormal" Color="{Binding Source={StaticResource  GreyColorNormal}, Path=Color}"/>
+    <SolidColorBrush x:Key="AddionalColorDark" Color="{Binding Source={StaticResource  GreyColorDark}, Path=Color}"/>
+    <SolidColorBrush x:Key="AddionalColorVeryDark" Color="{Binding Source={StaticResource  GreyColorVeryDark}, Path=Color}"/>
+
+    <SolidColorBrush x:Key="ContrastColorVeryBright" Color="{Binding Source={StaticResource  WhiteColorVeryBright}, Path=Color}"/>
+    <SolidColorBrush x:Key="ContrastColorBright" Color="{Binding Source={StaticResource  WhiteColorBright}, Path=Color}"/>
+    <SolidColorBrush x:Key="ContrastColorNormal" Color="{Binding Source={StaticResource  WhiteColorNormal}, Path=Color}"/>
+    <SolidColorBrush x:Key="ContrastColorDark" Color="{Binding Source={StaticResource  WhiteColorDark}, Path=Color}"/>
+    <SolidColorBrush x:Key="ContrastColorVeryDark" Color="{Binding Source={StaticResource  WhiteColorVeryDark}, Path=Color}"/>
+    
+</ResourceDictionary>

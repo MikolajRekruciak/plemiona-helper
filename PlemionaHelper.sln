@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33205.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlemionaHelper", "PlemionaHelper\PlemionaHelper.csproj", "{D7FD5E49-CA20-4A74-B31A-8BB6A79B3C96}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITA.WPF_ThirdParty", "ITA.WPF_ThirdParty\ITA.WPF_ThirdParty.csproj", "{B0472062-6180-4037-AEA2-0B7D3BF63DCF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D7FD5E49-CA20-4A74-B31A-8BB6A79B3C96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7FD5E49-CA20-4A74-B31A-8BB6A79B3C96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7FD5E49-CA20-4A74-B31A-8BB6A79B3C96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7FD5E49-CA20-4A74-B31A-8BB6A79B3C96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0472062-6180-4037-AEA2-0B7D3BF63DCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0472062-6180-4037-AEA2-0B7D3BF63DCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0472062-6180-4037-AEA2-0B7D3BF63DCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0472062-6180-4037-AEA2-0B7D3BF63DCF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9AE26F6A-456C-4C89-B4F7-C7911309CC99}
+	EndGlobalSection
+EndGlobal
