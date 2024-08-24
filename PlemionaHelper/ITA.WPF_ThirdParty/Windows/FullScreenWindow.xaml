@@ -1,0 +1,19 @@
+﻿<local:BaseWindowWithChangableContent x:Class="WPF_ThirdParty.Windows.FullScreenWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_ThirdParty.Windows"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        WindowState="Maximized"
+        AllowsTransparency="True"
+        d:DesignHeight="200"
+        d:DesignWidth="400"
+        Background="{DynamicResource MaterialDesignPaper}"
+        >
+
+    <!--<Border BorderThickness="1" BorderBrush="{StaticResource AddionalColorNormal}">-->
+        <ContentControl Name="WindowContentControl" Margin="10"/>
+    <!--</Border>-->
+</local:BaseWindowWithChangableContent>

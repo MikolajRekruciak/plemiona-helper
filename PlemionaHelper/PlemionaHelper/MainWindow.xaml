@@ -1,0 +1,121 @@
+﻿<Window x:Class="PlemionaHelper.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PlemionaHelper"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <DockPanel>
+
+        <Grid DockPanel.Dock="Top">
+            <Button Width="100" 
+                Height="50" 
+                Content="Odśwież"
+                    Command="{Binding RefreshCommand}"
+                HorizontalAlignment="Left"/>
+
+            <Button Width="100" 
+                Height="50" 
+                Content="Wczytaj raport"
+                Click="LoadRaportButton_Click"
+                    HorizontalAlignment="Right"/>
+        </Grid>
+        
+        <Grid>
+            <DataGrid ItemsSource="{Binding Wioski}"                      
+                      AutoGenerateColumns="False"
+                      CanUserAddRows="False">
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Header="Wioska">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock>
+                                        <TextBlock.Text>
+                                            <MultiBinding StringFormat="{}{0} ({1}|{2}) - K{3}">
+                                                <Binding Path="Wioska.NazwaWioski" />
+                                                <Binding Path="Wioska.X" />
+                                                <Binding Path="Wioska.Y" />
+                                                <Binding Path="Wioska.Kontynent" />
+                                            </MultiBinding>
+                                        </TextBlock.Text>
+                                    </TextBlock>
+                                    <TextBlock Text="{Binding Wioska.NazwaGracza}"></TextBlock>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Drewno">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock>
+                                        <TextBlock.Text>
+                                            <MultiBinding StringFormat="{}{0}/{1}">
+                                                <Binding Path="StanDrewno" />
+                                                <Binding Path="Zasoby_MaxIlosc" />
+                                            </MultiBinding>
+                                        </TextBlock.Text>
+                                    </TextBlock>
+                                    <TextBlock Text="{Binding DrewnoOverflowDateTime}"></TextBlock>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Glina">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock>
+                                        <TextBlock.Text>
+                                            <MultiBinding StringFormat="{}{0}/{1}">
+                                                <Binding Path="StanGlina" />
+                                                <Binding Path="Zasoby_MaxIlosc" />
+                                            </MultiBinding>
+                                        </TextBlock.Text>
+                                    </TextBlock>
+                                    <TextBlock Text="{Binding GlinaOverflowDateTime}"></TextBlock>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Żelazo">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock>
+                                        <TextBlock.Text>
+                                            <MultiBinding StringFormat="{}{0}/{1}">
+                                                <Binding Path="StanZelazo" />
+                                                <Binding Path="Zasoby_MaxIlosc" />
+                                            </MultiBinding>
+                                        </TextBlock.Text>
+                                    </TextBlock>
+                                    <TextBlock Text="{Binding ZelazoOverflowDateTime}"></TextBlock>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Piki">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock>
+                                        <TextBlock.Text>
+                                            <MultiBinding StringFormat="{}{0}/{1}">
+                                                <Binding Path="StanZelazo" />
+                                                <Binding Path="Zasoby_MaxIlosc" />
+                                            </MultiBinding>
+                                        </TextBlock.Text>
+                                    </TextBlock>
+                                    <TextBlock Text="{Binding ZelazoOverflowDateTime}"></TextBlock>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </DockPanel>
+</Window>

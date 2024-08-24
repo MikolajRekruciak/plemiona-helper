@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="WPF_ThirdParty.ShowDialogs.ScanShowDialog"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPF_ThirdParty.ShowDialogs"
+             mc:Ignorable="d" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+            xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:System="clr-namespace:System;assembly=mscorlib"
+             Background="{DynamicResource MaterialDesignPaper}" Padding="5"
+             Focusable="False">
+    <DockPanel MinWidth="200">
+
+        <StackPanel DockPanel.Dock="Top" 
+                    Orientation="Vertical"
+                    HorizontalAlignment="Center">
+
+            <TextBlock Text="{Binding HeaderText}"
+                       FontSize="24"
+                       HorizontalAlignment="Center"/>
+
+            <TextBox Name="InsertedValueTextBox" 
+                     MinWidth="120"
+                     TextAlignment="Center"
+                     Text="{Binding ReturnValue, UpdateSourceTrigger=PropertyChanged}"
+                     Margin="10">
+                <TextBox.InputBindings>
+                    <KeyBinding Key="Enter" Command="{Binding EnterKeyCommand}"/>
+                    <KeyBinding Key="Esc" Command="{Binding EscapeKeyCommand}"/>
+                </TextBox.InputBindings>
+            </TextBox>
+            
+        </StackPanel>
+        
+        <Button DockPanel.Dock="Bottom"
+                Name="AnulujButton"
+                Margin="0,10,0,0"
+                Width="140"
+                Click="AnulujButton_Click">
+            ANULUJ
+        </Button>
+        
+    </DockPanel>
+</UserControl>
