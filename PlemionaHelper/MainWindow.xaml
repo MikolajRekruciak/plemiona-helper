@@ -18,7 +18,21 @@
             <Button Width="100" 
                 Height="50" 
                 Content="Wczytaj raport"
-                Click="LoadRaportButton_Click"
+                    Command="{Binding LoadReportCommand}"
+                    HorizontalAlignment="Right"/>
+            
+            <Button Width="100" 
+                    Margin="0,0,120,0"
+                    Height="50" 
+                    Content="Wyślij atak"
+                    Command="{Binding SendAttackCommand}"
+                    HorizontalAlignment="Right"/>
+
+            <Button Width="100" 
+                    Margin="0,0,240,0"
+                    Height="50" 
+                    Content="Start plemiona"
+                    Command="{Binding LaunchPlemionaCommand}"
                     HorizontalAlignment="Right"/>
         </Grid>
         
@@ -110,6 +124,17 @@
                                         </TextBlock.Text>
                                     </TextBlock>
                                     <TextBlock Text="{Binding ZelazoOverflowDateTime}"></TextBlock>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Usuń">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Vertical">
+                                    <Button Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}, Path=DataContext.RemoveWioska}"
+                                            CommandParameter="{Binding}"
+                                            Content="Usuń"/>
                                 </StackPanel>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>

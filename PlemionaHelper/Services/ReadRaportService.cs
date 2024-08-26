@@ -73,7 +73,7 @@ namespace PlemionaHelper.Services
             if (node == null)
                 return 0;
 
-            return Convert.ToInt32(node.InnerText);
+            return Convert.ToInt32(node.InnerText.Replace(".", ""));
         }
 
         private static Wioska Read_WyszpiegowaneSurowce(

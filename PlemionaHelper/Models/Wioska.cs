@@ -8,6 +8,8 @@ namespace PlemionaHelper
 {
     public class Wioska
     {
+        public int Id { get; set; }
+
         public int Kontynent { get; set; }
 
         public int X { get; set; }
