@@ -24,17 +24,18 @@ namespace PlemionaHelper
         public int PoziomSchowka { get; set; }
 
         public int PoziomTartak { get; set; }
-        public int PoziomCegla { get; set; }
+        public int PoziomGlina { get; set; }
         public int PoziomZelazo { get; set; }
 
         public int PoziomMur { get; set; }
 
+        public int HorsesAssigned { get; set; }
 
         public decimal Odleglosc { get; set; }
 
 
         public Atak OstatniAtak { get; set; }
 
-        public Atak NadchodzacyAtak { get; set; }
+        //public Atak NadchodzacyAtak { get; set; }
     }
 }

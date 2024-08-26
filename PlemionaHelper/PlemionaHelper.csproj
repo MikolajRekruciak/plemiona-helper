@@ -77,8 +77,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Models\Atak.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="Models\Atak.cs" />
+    <Compile Include="Settings.cs" />
     <Compile Include="Models\Wioska.cs" />
     <Compile Include="Services\EnvironmentCalculators.cs" />
     <Compile Include="Services\IO_Service.cs" />

@@ -25,7 +25,7 @@
                     Margin="0,0,120,0"
                     Height="50" 
                     Content="Wyślij atak"
-                    Command="{Binding SendAttackCommand}"
+                    Command="{Binding StartBotting}"
                     HorizontalAlignment="Right"/>
 
             <Button Width="100" 
@@ -55,75 +55,46 @@
                                             </MultiBinding>
                                         </TextBlock.Text>
                                     </TextBlock>
+                                    <TextBlock Text="{Binding Wioska.Odleglosc, StringFormat='{}Odległość: {0}'}"></TextBlock>
                                     <TextBlock Text="{Binding Wioska.NazwaGracza}"></TextBlock>
                                 </StackPanel>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-                    <DataGridTemplateColumn Header="Drewno">
+                    <DataGridTemplateColumn Header="Produkcja [h]">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Vertical">
-                                    <TextBlock>
-                                        <TextBlock.Text>
-                                            <MultiBinding StringFormat="{}{0}/{1}">
-                                                <Binding Path="StanDrewno" />
-                                                <Binding Path="Zasoby_MaxIlosc" />
-                                            </MultiBinding>
-                                        </TextBlock.Text>
-                                    </TextBlock>
-                                    <TextBlock Text="{Binding DrewnoOverflowDateTime}"></TextBlock>
+                                    <TextBlock Text="{Binding Path=HourProduceDrewno, StringFormat='{}Drewno: {0}'}"/>
+                                    <TextBlock Text="{Binding Path=HourProduceGlina, StringFormat='{}Glina: {0}'}"/>
+                                    <TextBlock Text="{Binding Path=HourProduceZelazo, StringFormat='{}Żelazo: {0}'}"/>
                                 </StackPanel>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-                    <DataGridTemplateColumn Header="Glina">
+                    <DataGridTemplateColumn Header="Konie per atak">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Vertical">
-                                    <TextBlock>
-                                        <TextBlock.Text>
-                                            <MultiBinding StringFormat="{}{0}/{1}">
-                                                <Binding Path="StanGlina" />
-                                                <Binding Path="Zasoby_MaxIlosc" />
-                                            </MultiBinding>
-                                        </TextBlock.Text>
-                                    </TextBlock>
-                                    <TextBlock Text="{Binding GlinaOverflowDateTime}"></TextBlock>
+                                    <TextBox Text="{Binding HorsesAssigned, UpdateSourceTrigger=PropertyChanged}"/>
                                 </StackPanel>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-                    <DataGridTemplateColumn Header="Żelazo">
+                    <DataGridTemplateColumn Header="Częstotliwość ataków">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Vertical">
-                                    <TextBlock>
-                                        <TextBlock.Text>
-                                            <MultiBinding StringFormat="{}{0}/{1}">
-                                                <Binding Path="StanZelazo" />
-                                                <Binding Path="Zasoby_MaxIlosc" />
-                                            </MultiBinding>
-                                        </TextBlock.Text>
-                                    </TextBlock>
-                                    <TextBlock Text="{Binding ZelazoOverflowDateTime}"></TextBlock>
+                                    <TextBlock Text="{Binding Path=AttackInterval}"/>
                                 </StackPanel>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-                    <DataGridTemplateColumn Header="Piki">
+                    <DataGridTemplateColumn Header="Next attack in">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Vertical">
-                                    <TextBlock>
-                                        <TextBlock.Text>
-                                            <MultiBinding StringFormat="{}{0}/{1}">
-                                                <Binding Path="StanZelazo" />
-                                                <Binding Path="Zasoby_MaxIlosc" />
-                                            </MultiBinding>
-                                        </TextBlock.Text>
-                                    </TextBlock>
-                                    <TextBlock Text="{Binding ZelazoOverflowDateTime}"></TextBlock>
+                                    <TextBlock Text="{Binding Path=NextAttackInterval}"/>
                                 </StackPanel>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>

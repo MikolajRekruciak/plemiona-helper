@@ -3,17 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Shapes;
 
 namespace PlemionaHelper
 {
     public static class Constants
     {
-        public static int Wioska_X { get; set; } = 701;
-
-        public static int Wioska_Y { get; set; } = 473;
-
-        // 698 | 475 = 3.6
-        // 
+        public static int Ladownosc_LekkiKawalerzysta = (int)(80 * (100 + Settings.Flaga_Ladownosc) / 100d);
     }
 }

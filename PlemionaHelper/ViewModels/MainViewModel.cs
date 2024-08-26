@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
@@ -17,6 +18,56 @@ namespace PlemionaHelper.ViewModels
 {
     public class MainViewModel : BaseViewModel
     {
+        public MainViewModel()
+        {
+            botTask = new Task(() =>
+            {
+                while (true)
+                {
+                    foreach (var wioska in Wioski.Where(q => q.AttackInterval > TimeSpan.FromSeconds(1)))
+                    {
+                        if (wioska.DataWyslaniaOstatniegoAtaku == (DateTime?)null ||
+                            (DateTime.Now - (DateTime)wioska.DataWyslaniaOstatniegoAtaku) >=
+                            wioska.AttackInterval)
+                        {
+                            WyslijAtak(wioska);
+                        }
+
+                        wioska.OnPropertyChanged(nameof(wioska.NextAttackInterval));
+                    }
+
+                    Thread.Sleep(1000);
+                }
+            });
+        }
+
+        private void WyslijAtak(WioskaViewModel wioska)
+        {
+            // Otwórz stronę
+            driver.Navigate().GoToUrl($"https://pl203.plemiona.pl/game.php?village={Settings.Wioska_Id}&screen=place&target={wioska.Wioska.Id}");
+
+            // Znajdź pole tekstowe i wprowadź tekst
+            IWebElement textBoxZwiad = driver.FindElement(By.Id("unit_input_spy"));
+            textBoxZwiad.SendKeys("1");
+
+            // Znajdź pole tekstowe i wprowadź tekst
+            IWebElement textBoxLekka = driver.FindElement(By.Id("unit_input_light"));
+            textBoxLekka.SendKeys($"{wioska.HorsesAssigned}");
+
+            // Znajdź przycisk i kliknij
+            IWebElement button = driver.FindElement(By.Id("target_attack"));
+            button.Click();
+
+            // Poczekaj na załadowanie nowej strony
+            System.Threading.Thread.Sleep(800); // Możesz użyć bardziej zaawansowanych metod oczekiwania
+
+            // Znajdź przycisk potwierdzenia i kliknij
+            IWebElement confirmButton = driver.FindElement(By.Id("troop_confirm_submit"));
+            confirmButton.Click();
+
+            wioska.DataWyslaniaOstatniegoAtaku = DateTime.Now;
+        }
+
         public ObservableCollection<WioskaViewModel> Wioski { get; set; }
 
         private static MainViewModel _instance;
@@ -36,10 +87,7 @@ namespace PlemionaHelper.ViewModels
             }
         }
 
-        Task botTask = new Task(() =>
-        {
-
-        });
+        Task botTask;
 
         public ICommand StartBotting => new RelayCommand(() =>
         {
@@ -58,7 +106,7 @@ namespace PlemionaHelper.ViewModels
         {
             foreach (var wioska in Wioski)
             {
-                wioska.Refresh();
+                //wioska.Refresh();
             }
         });
 
@@ -83,6 +131,10 @@ namespace PlemionaHelper.ViewModels
 
             ret.Id = id;
 
+            var wioskaDoAktualizacji = Wioski.FirstOrDefault(q => q.Wioska.Id == id);
+            if (wioskaDoAktualizacji != null)
+                Wioski.Remove(wioskaDoAktualizacji);
+
             MainViewModel.Instance.Wioski.Add(new WioskaViewModel(ret));
         });
 
@@ -102,28 +154,6 @@ namespace PlemionaHelper.ViewModels
         {
             //// Ustawienia przeglądarki
             //IWebDriver driver = new ChromeDriver();
-
-            // Otwórz stronę
-            driver.Navigate().GoToUrl("https://pl203.plemiona.pl/game.php?village=43404&screen=place&target=45285");
-
-            // Znajdź pole tekstowe i wprowadź tekst
-            IWebElement textBoxZwiad = driver.FindElement(By.Id("unit_input_spy"));
-            textBoxZwiad.SendKeys("1");
-
-            // Znajdź pole tekstowe i wprowadź tekst
-            IWebElement textBoxLekka = driver.FindElement(By.Id("unit_input_light"));
-            textBoxLekka.SendKeys("1");
-
-            // Znajdź przycisk i kliknij
-            IWebElement button = driver.FindElement(By.Id("target_attack"));
-            button.Click();
-
-            // Poczekaj na załadowanie nowej strony
-            System.Threading.Thread.Sleep(2000); // Możesz użyć bardziej zaawansowanych metod oczekiwania
-
-            // Znajdź przycisk potwierdzenia i kliknij
-            IWebElement confirmButton = driver.FindElement(By.Id("troop_confirm_submit"));
-            confirmButton.Click();
 
             // Zamknij przeglądarkę
             //driver.Quit();

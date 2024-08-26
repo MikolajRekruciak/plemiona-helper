@@ -17,71 +17,119 @@ namespace PlemionaHelper.ViewModels
             Wioska = wioska;
         }
 
-        public int StanGlina => Math.Min(Zasoby_MaxIlosc,
-            EnvironmentCalculators.ObliczAktualnyStanZasobu(
-                Wioska.PoziomCegla,
-                Wioska.OstatniAtak.CzasAtaku,
-                Wioska.OstatniAtak.WyszpiegowanaGlina));
+        public int HourProduceDrewno =>
+            EnvironmentCalculators.KopalniaLvlToGodzinneWydobycie(Wioska.PoziomTartak);
+        public int HourProduceGlina =>
+            EnvironmentCalculators.KopalniaLvlToGodzinneWydobycie(Wioska.PoziomGlina);
+        public int HourProduceZelazo =>
+            EnvironmentCalculators.KopalniaLvlToGodzinneWydobycie(Wioska.PoziomZelazo);
 
-        public int StanDrewno => Math.Min(Zasoby_MaxIlosc,
-            EnvironmentCalculators.ObliczAktualnyStanZasobu(
-                Wioska.PoziomTartak,
-                Wioska.OstatniAtak.CzasAtaku,
-                Wioska.OstatniAtak.WyszpiegowaneDrewno));
 
-        public int StanZelazo => Math.Min(Zasoby_MaxIlosc,
-            EnvironmentCalculators.ObliczAktualnyStanZasobu(
-                Wioska.PoziomZelazo,
-                Wioska.OstatniAtak.CzasAtaku,
-                Wioska.OstatniAtak.WyszpiegowaneZelazo));
+        public DateTime? DataWyslaniaOstatniegoAtaku { get; set; }
 
-        public DateTime DrewnoOverflowDateTime
+
+
+        public int SumHourProduce =>
+            HourProduceDrewno + HourProduceGlina + HourProduceZelazo;
+
+        public int HorsesAssigned
         {
-            get
+            get => Wioska.HorsesAssigned;
+            set
             {
-                if (Zasoby_MaxIlosc == StanDrewno)
-                    return DateTime.Now;
-
-                int pozostaloMiejsca = Zasoby_MaxIlosc - StanDrewno;
-
-                decimal wydobycieZasobuPerMinute = EnvironmentCalculators.
-                    KopalniaLvlToGodzinneWydobycie(Wioska.PoziomTartak) / 60m;
-
-                return DateTime.Now.AddMinutes((double)(pozostaloMiejsca / wydobycieZasobuPerMinute));
+                Wioska.HorsesAssigned = value;
+                _attackInterval = new TimeSpan();
+                OnPropertyChanged(nameof(AttackInterval));
             }
         }
 
-        public DateTime GlinaOverflowDateTime
+        private TimeSpan _attackInterval;
+        public TimeSpan AttackInterval
         {
             get
             {
-                if (Zasoby_MaxIlosc == StanGlina)
-                    return DateTime.Now;
+                if (_attackInterval.TotalSeconds == 0 && HorsesAssigned != 0)
+                {
+                    double proporcja = (HorsesAssigned * Constants.Ladownosc_LekkiKawalerzysta) / (double)SumHourProduce;
 
-                int pozostaloMiejsca = Zasoby_MaxIlosc - StanGlina;
+                    _attackInterval = TimeSpan.FromHours(proporcja);
+                }
 
-                decimal wydobycieZasobuPerMinute = EnvironmentCalculators.
-                    KopalniaLvlToGodzinneWydobycie(Wioska.PoziomCegla) / 60m;
-
-                return DateTime.Now.AddMinutes((double)(pozostaloMiejsca / wydobycieZasobuPerMinute));
+                return _attackInterval;
             }
         }
 
-        public DateTime ZelazoOverflowDateTime
-        {
-            get
-            {
-                if (Zasoby_MaxIlosc == StanZelazo)
-                    return DateTime.Now;
+        public TimeSpan NextAttackInterval =>
+            DataWyslaniaOstatniegoAtaku == (DateTime?)null
+            ? new TimeSpan()
+            : AttackInterval - (DateTime.Now - (DateTime)DataWyslaniaOstatniegoAtaku);
 
-                int pozostaloMiejsca = Zasoby_MaxIlosc - StanZelazo;
 
-                decimal wydobycieZasobuPerMinute = EnvironmentCalculators.
-                    KopalniaLvlToGodzinneWydobycie(Wioska.PoziomZelazo) / 60m;
+        //public int StanGlina => Math.Min(Zasoby_MaxIlosc,
+        //    EnvironmentCalculators.ObliczAktualnyStanZasobu(
+        //        Wioska.PoziomCegla,
+        //        Wioska.OstatniAtak.CzasAtaku,
+        //        Wioska.OstatniAtak.WyszpiegowanaGlina));
 
-                return DateTime.Now.AddMinutes((double)(pozostaloMiejsca / wydobycieZasobuPerMinute));
-            }
-        }
+        //public int StanDrewno => Math.Min(Zasoby_MaxIlosc,
+        //    EnvironmentCalculators.ObliczAktualnyStanZasobu(
+        //        Wioska.PoziomTartak,
+        //        Wioska.OstatniAtak.CzasAtaku,
+        //        Wioska.OstatniAtak.WyszpiegowaneDrewno));
+
+        //public int StanZelazo => Math.Min(Zasoby_MaxIlosc,
+        //    EnvironmentCalculators.ObliczAktualnyStanZasobu(
+        //        Wioska.PoziomZelazo,
+        //        Wioska.OstatniAtak.CzasAtaku,
+        //        Wioska.OstatniAtak.WyszpiegowaneZelazo));
+
+        //public DateTime DrewnoOverflowDateTime
+        //{
+        //    get
+        //    {
+        //        if (Zasoby_MaxIlosc == StanDrewno)
+        //            return DateTime.Now;
+
+        //        int pozostaloMiejsca = Zasoby_MaxIlosc - StanDrewno;
+
+        //        decimal wydobycieZasobuPerMinute = EnvironmentCalculators.
+        //            KopalniaLvlToGodzinneWydobycie(Wioska.PoziomTartak) / 60m;
+
+        //        return DateTime.Now.AddMinutes((double)(pozostaloMiejsca / wydobycieZasobuPerMinute));
+        //    }
+        //}
+
+        //public DateTime GlinaOverflowDateTime
+        //{
+        //    get
+        //    {
+        //        if (Zasoby_MaxIlosc == StanGlina)
+        //            return DateTime.Now;
+
+        //        int pozostaloMiejsca = Zasoby_MaxIlosc - StanGlina;
+
+        //        decimal wydobycieZasobuPerMinute = EnvironmentCalculators.
+        //            KopalniaLvlToGodzinneWydobycie(Wioska.PoziomCegla) / 60m;
+
+        //        return DateTime.Now.AddMinutes((double)(pozostaloMiejsca / wydobycieZasobuPerMinute));
+        //    }
+        //}
+
+        //public DateTime ZelazoOverflowDateTime
+        //{
+        //    get
+        //    {
+        //        if (Zasoby_MaxIlosc == StanZelazo)
+        //            return DateTime.Now;
+
+        //        int pozostaloMiejsca = Zasoby_MaxIlosc - StanZelazo;
+
+        //        decimal wydobycieZasobuPerMinute = EnvironmentCalculators.
+        //            KopalniaLvlToGodzinneWydobycie(Wioska.PoziomZelazo) / 60m;
+
+        //        return DateTime.Now.AddMinutes((double)(pozostaloMiejsca / wydobycieZasobuPerMinute));
+        //    }
+        //}
 
         private int _zasoby_MaxIlosc { get; set; }
         public int Zasoby_MaxIlosc
@@ -95,14 +143,14 @@ namespace PlemionaHelper.ViewModels
             }
         }
             
-        public void Refresh()
-        {
-            OnPropertyChanged(nameof(StanDrewno));
-            OnPropertyChanged(nameof(StanGlina));
-            OnPropertyChanged(nameof(StanZelazo));
-            OnPropertyChanged(nameof(DrewnoOverflowDateTime));
-            OnPropertyChanged(nameof(GlinaOverflowDateTime));
-            OnPropertyChanged(nameof(ZelazoOverflowDateTime));
-        }
+        //public void Refresh()
+        //{
+        //    OnPropertyChanged(nameof(StanDrewno));
+        //    OnPropertyChanged(nameof(StanGlina));
+        //    OnPropertyChanged(nameof(StanZelazo));
+        //    OnPropertyChanged(nameof(DrewnoOverflowDateTime));
+        //    OnPropertyChanged(nameof(GlinaOverflowDateTime));
+        //    OnPropertyChanged(nameof(ZelazoOverflowDateTime));
+        //}
     }
 }

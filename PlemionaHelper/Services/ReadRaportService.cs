@@ -51,7 +51,7 @@ namespace PlemionaHelper.Services
             wioska.Kontynent = result.Kontynent;
             wioska.Odleglosc = Decimal.Round(
                 (decimal)Math.Sqrt(
-                Math.Pow(wioska.X - Constants.Wioska_X, 2) + Math.Pow(wioska.Y - Constants.Wioska_Y, 2))
+                Math.Pow(wioska.X - Settings.Wioska_X, 2) + Math.Pow(wioska.Y - Settings.Wioska_Y, 2))
                 , 1, MidpointRounding.AwayFromZero);
 
             // h4_1
@@ -116,7 +116,7 @@ namespace PlemionaHelper.Services
             wioska.PoziomTartak = GetBuildingLvl(
                 tableNodes.FirstOrDefault(q => q.InnerHtml.Contains("Tartak")));
 
-            wioska.PoziomCegla = GetBuildingLvl(
+            wioska.PoziomGlina = GetBuildingLvl(
                 tableNodes.FirstOrDefault(q => q.InnerHtml.Contains("Cegielnia")));
 
             wioska.PoziomZelazo = GetBuildingLvl(
