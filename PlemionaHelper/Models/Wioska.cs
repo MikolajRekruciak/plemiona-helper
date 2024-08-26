@@ -37,5 +37,6 @@ namespace PlemionaHelper
         public Atak OstatniAtak { get; set; }
 
         //public Atak NadchodzacyAtak { get; set; }
+        public DateTime? DataWyslaniaOstatniegoAtaku { get; set; }
     }
 }

@@ -24,12 +24,11 @@ namespace PlemionaHelper.ViewModels
         public int HourProduceZelazo =>
             EnvironmentCalculators.KopalniaLvlToGodzinneWydobycie(Wioska.PoziomZelazo);
 
-
-        public DateTime? DataWyslaniaOstatniegoAtaku { get; set; }
-
+        public DateTime? DataWyslaniaOstatniegoAtaku { get => Wioska.DataWyslaniaOstatniegoAtaku; set => Wioska.DataWyslaniaOstatniegoAtaku = value; }
 
 
-        public int SumHourProduce =>
+
+    public int SumHourProduce =>
             HourProduceDrewno + HourProduceGlina + HourProduceZelazo;
 
         public int HorsesAssigned
