@@ -11,8 +11,8 @@
         <Grid DockPanel.Dock="Top">
             <Button Width="100" 
                 Height="50" 
-                Content="Odśwież"
-                    Command="{Binding RefreshCommand}"
+                Content="Sound test"
+                    Command="{Binding SoundTestCommand}"
                 HorizontalAlignment="Left"/>
 
             <Button Width="100" 
@@ -57,6 +57,16 @@
                                     </TextBlock>
                                     <TextBlock Text="{Binding Wioska.Odleglosc, StringFormat='{}Odległość: {0}'}"></TextBlock>
                                     <TextBlock Text="{Binding Wioska.NazwaGracza}"></TextBlock>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Mur" Width="50">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Text="{Binding Path=Wioska.PoziomMur}"
+                                               HorizontalAlignment="Center"/>
                                 </StackPanel>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>

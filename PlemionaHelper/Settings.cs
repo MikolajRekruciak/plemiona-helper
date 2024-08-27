@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,14 +10,18 @@ namespace PlemionaHelper
 {
     public static class Settings
     {
-        public static int Wioska_X { get; set; } = 701;
+        public static int Wioska_X => Convert.ToInt32(
+            ConfigurationManager.AppSettings["Wioska_X"]);
 
-        public static int Wioska_Y { get; set; } = 473;
+        public static int Wioska_Y => Convert.ToInt32(
+            ConfigurationManager.AppSettings["Wioska_Y"]);
 
-        public static int Wioska_Id { get; set; } = 43404;
+        public static int Wioska_Id => Convert.ToInt32(
+            ConfigurationManager.AppSettings["Wioska_Id"]);
 
         // 698 | 475 = 3.6
         // 
-        public static int Flaga_Ladownosc { get; set; } = 5;
+        public static int Flaga_Ladownosc => Convert.ToInt32(
+            ConfigurationManager.AppSettings["Flaga_Ladownosc"]);
     }
 }

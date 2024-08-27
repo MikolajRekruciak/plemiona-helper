@@ -6,11 +6,13 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media;
 using WPF_ThirdParty;
 using WPF_ThirdParty.VM_Implementation;
 
@@ -41,13 +43,60 @@ namespace PlemionaHelper.ViewModels
             });
         }
 
+        private IWebElement TextBoxZwiad()
+        {
+            int i = 0;
+            while (i < 20)
+            {
+                try
+                {
+                    return driver.FindElement(By.Id("unit_input_spy")); 
+                }
+                catch (Exception ex)
+                {
+                    PlaySound_OchronaBotowa();
+                    Thread.Sleep(2000);
+                }
+            }
+
+            return null;
+        }
+
+        private MediaPlayer mediaPlayer = new MediaPlayer();
+        private void PlaySound_OchronaBotowa()
+        {
+            string relativePath = "Sounds/Ochrona_botowa.mp3";
+            string absolutePath = System.IO.Path.GetFullPath(relativePath);
+            mediaPlayer.Open(new Uri(absolutePath, UriKind.Absolute));
+            mediaPlayer.Play();
+        }
+
+        public ICommand SoundTestCommand => new RelayCommand(() =>
+        {
+            PlaySound_OchronaBotowa();
+        });
+
+        private IWebElement Sumbminit()
+        {
+                try
+                {
+                    return driver.FindElement(By.Id("troop_confirm_submit"));
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+        }
+
         private void WyslijAtak(WioskaViewModel wioska)
         {
             // Otwórz stronę
             driver.Navigate().GoToUrl($"https://pl203.plemiona.pl/game.php?village={Settings.Wioska_Id}&screen=place&target={wioska.Wioska.Id}");
 
             // Znajdź pole tekstowe i wprowadź tekst
-            IWebElement textBoxZwiad = driver.FindElement(By.Id("unit_input_spy"));
+            IWebElement textBoxZwiad = TextBoxZwiad();
+            if (textBoxZwiad == null)
+                return;
             textBoxZwiad.SendKeys("1");
 
             // Znajdź pole tekstowe i wprowadź tekst
@@ -62,8 +111,9 @@ namespace PlemionaHelper.ViewModels
             System.Threading.Thread.Sleep(800); // Możesz użyć bardziej zaawansowanych metod oczekiwania
 
             // Znajdź przycisk potwierdzenia i kliknij
-            IWebElement confirmButton = driver.FindElement(By.Id("troop_confirm_submit"));
-            confirmButton.Click();
+            IWebElement confirmButton = Sumbminit();
+            if (confirmButton != null)
+                confirmButton.Click(); // Jak nie mamy ludzików żeby wysłać, to po prostu skipujemy ;/
 
             wioska.DataWyslaniaOstatniegoAtaku = DateTime.Now;
         }
